@@ -5,10 +5,15 @@ branch:
 - project-init-state:
   - api and web services are setup without dependencies installed.
   - to install dependencies, run following commands:
-    ```
+    - for api:
+      ```
+        docker-compose run --rm api bash
+        poetry install
+      ```
+    - for web:
+      ```
         docker-compose run --rm web npm install
-        docker-compose run --rm api poetry install
-    ```
+      ```
   - then, add
     - `command: ["npm", "run", "dev"]`
       to web service in docker-compose.yml
