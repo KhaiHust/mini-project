@@ -1,6 +1,6 @@
 services:
   web:
-    build: .docker/web
+    build: docker/web
     working_dir: /src/web
     # user: "1000"
     user: "${COMPOSE_UID:-1000}:${COMPOSE_GID:-1000}"
@@ -11,7 +11,7 @@ services:
     # command: ["npm", "run", "dev"]
 
   api:
-    build: ./.docker/api
+    build: docker/api
     volumes:
       - ./api:/var/task
     working_dir: /var/task
@@ -24,7 +24,7 @@ services:
     # entrypoint: ['poetry', 'run']
 
   db:
-    build: ./.docker/db
+    build: docker/db
     volumes:
       - db-data:/var/lib/postgresql/data
     ports:
@@ -34,7 +34,6 @@ services:
       - POSTGRES_PASSWORD=postgres
 
   pgadmin:
-    container_name: pgadmin
     image: dpage/pgadmin4
     environment:
       - PGADMIN_DEFAULT_EMAIL=pgadmin4@pgadmin.org
