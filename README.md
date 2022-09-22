@@ -22,3 +22,8 @@ branch:
 
 - api-setup:
   - api is setup with dependencies, connected to database with a User table, and API connection to the User table.
+  - setting up api:
+    - replace database name
+    - create database using pgadmin
+    - setup peewee models
+    - setup fastapi routers
