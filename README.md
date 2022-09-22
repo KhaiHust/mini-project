@@ -1,29 +1,21 @@
-# README #
+# README
 
-This README would normally document whatever steps are necessary to get your application up and running.
+branch:
 
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+- project-init-state:
+  - api and web services are setup without dependencies installed.
+  - to install dependencies, run following commands:
+    ```
+        docker-compose run --rm web npm install
+        docker-compose run --rm api poetry install
+    ```
+  - then, add
+    - `command: ["npm", "run", "dev"]`
+      to web service in docker-compose.yml
+    - ```
+        command: ["uvicorn", "main:router", "--reload", "--host=0.0.0.0"]
+        entrypoint: ['poetry', 'run']
+      ```
+      to api servce in docker-compose .yml
+- api-setup:
+  - api is setup with dependencies, connected to database with a User table, and API connection to the User table.
