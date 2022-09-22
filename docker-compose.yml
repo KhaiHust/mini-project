@@ -20,9 +20,9 @@ services:
     user: "${COMPOSE_UID:-1000}:${COMPOSE_GID:-1000}"
     environment:
       - HOME=/tmp
-    # command: ["uvicorn", "main:router", "--reload", "--host=0.0.0.0"]
-    # entrypoint: ['poetry', 'run']
-    entrypoint: []
+    command: ["uvicorn", "main:router", "--reload", "--host=0.0.0.0"]
+    entrypoint: ["poetry", "run"]
+    # entrypoint: []
 
   db:
     build: docker/db
