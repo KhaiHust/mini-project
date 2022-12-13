@@ -8,7 +8,7 @@ services:
       - ./web:/src/web
     ports:
       - "3000:3000"
-    # command: ["npm", "run", "dev"]
+    command: ["npm", "run", "dev"]
 
   api:
     build: docker/api
@@ -20,9 +20,9 @@ services:
     user: "${COMPOSE_UID:-1000}:${COMPOSE_GID:-1000}"
     environment:
       - HOME=/tmp
-    # command: ["uvicorn", "main:router", "--reload", "--host=0.0.0.0"]
+    command: ["uvicorn", "main:router", "--reload", "--host=0.0.0.0"]
     # entrypoint: ['poetry', 'run']
-    entrypoint: []
+    # entrypoint: []
 
   db:
     build: docker/db
