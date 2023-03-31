@@ -32,3 +32,8 @@ Install dependencies per section 1. Then setup database with following instructi
 - create database using pgadmin
 - setup peewee models
 - setup fastapi routers
+
+## TODO
+
+- [ ] add eslint and pylint
+- [ ] add pug and sass
