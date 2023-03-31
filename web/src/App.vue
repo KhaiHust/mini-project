@@ -1,24 +1,24 @@
 <template>
   <v-app>
     <v-main>
-      <!-- <HelloWorld/> -->
+      <v-botttom-navigation>
+        <v-btn :to="{name: 'home'}" prepend-icon="mdi-home">Home</v-btn>
+        <v-btn :to="{name: 'about'}" prepend-icon="mdi-information-outline">About</v-btn>
+        <v-btn :to="{name: 'helloworld'}" prepend-icon="mdi-new-box">Hello World</v-btn>
+      </v-botttom-navigation>
       <router-view></router-view>
     </v-main>
   </v-app>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'App',
 
-  components: {
-    HelloWorld,
-  },
+  setup() {
 
-  data: () => ({
-    //
-  }),
-}
+  }
+})
 </script>
