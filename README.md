@@ -21,7 +21,7 @@ api and web services are setup without dependencies installed. To install depend
 
 - then, add
   - `command: ["npm", "run", "dev"]` to web service in docker-compose.yml
-  - `command: ["uvicorn", "main:router", "--reload", "--host=0.0.0.0"]` to api servce in docker-compose .yml
+  - `command: ["uvicorn", "main:router", "--reload", "--host=0.0.0.0"]` to api service in docker-compose .yml
   - and, replace `entrypoint: []` with `entrypoint: ['poetry', 'run']`
 
 ### 2. api-setup
