@@ -17,22 +17,27 @@ services:
     working_dir: /var/task
     ports:
       - "8000:8000"
+    depends_on:
+      - db
     user: "${COMPOSE_UID:-1000}:${COMPOSE_GID:-1000}"
     environment:
       - HOME=/tmp
     command: ["uvicorn", "main:router", "--reload", "--host=0.0.0.0"]
     entrypoint: ['poetry', 'run']
     # entrypoint: []
+    
 
   db:
     build: docker/db
     volumes:
       - db-data:/var/lib/postgresql/data
     ports:
-      - "4000:5432"
+      - "5434:5432"
+    
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=miniproject
 
   pgadmin:
     image: dpage/pgadmin4

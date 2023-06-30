@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from routers import users
+from routers import users, movies
 
 router = FastAPI()
 
@@ -11,3 +11,4 @@ def root_access():
 
 
 router.include_router(users.router)
+router.include_router(movies.router)

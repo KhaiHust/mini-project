@@ -40,5 +40,5 @@ db = _DBProxy()
 class PeeWeeBaseModel(Model):
     class Meta:
         database = psql_db
-        schema = "public"
+        # schema = "public"
         legacy_label_names = False
