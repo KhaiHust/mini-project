@@ -1,4 +1,4 @@
-from typing import Any, List, Union
+from typing import Any, List, Union, Optional
 import datetime
 import peewee
 from pydantic import BaseModel
@@ -14,16 +14,22 @@ class PeeweeGetterDict(GetterDict):
 
 
 class Movies(BaseModel):
-
     name: str
-    startDate: datetime
-    endDate:  datetime
+    start_date: datetime.date
+    end_date:  datetime.date
     duration: int
-    img: str
+    img: Optional[str]
     description: str
 
 
 class ShowMovies(Movies):
+    id: int
+
     class Config:
         orm_mode = True
         getter_dict = PeeweeGetterDict
+
+
+class MovieListResponse(BaseModel):
+    msg: str
+    data: List[ShowMovies]
