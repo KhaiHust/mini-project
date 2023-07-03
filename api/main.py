@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from routers import movies
+from routers import movies, calendars
 
 router = FastAPI()
 
@@ -12,3 +12,4 @@ router = FastAPI()
 
 # router.include_router(users.router)
 router.include_router(movies.router)
+router.include_router(calendars.router)
