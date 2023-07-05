@@ -35,3 +35,13 @@ def create_calendars_movie(request: schemas_calendars.MovieCalendars):
         schedule.append(new_calendar)
     schedule = [model_to_dict(calendar) for calendar in schedule]
     return schedule
+
+
+def delete_calendar_by_id(id: int):
+    try:
+        calendar = Calendars.get(Calendars.id == id)
+        calendar.delete_instance()
+        return None
+    except Calendars.DoesNotExist:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail=f'Calendar with ID {id} not found')

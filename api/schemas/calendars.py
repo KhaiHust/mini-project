@@ -15,7 +15,7 @@ class PeeweeGetterDict(GetterDict):
 
 class Calendars(BaseModel):
     id: int
-    movie_id: int
+    movie_id: Any
     start_time: datetime.datetime
     end_time: datetime.datetime
     seat_ordered: Optional[list[int]]
@@ -35,3 +35,8 @@ class TimeShow(BaseModel):
 class MovieCalendars(BaseModel):
     movie_id: int
     time: List[TimeShow]
+
+
+class CalendersListResponse(BaseModel):
+    msg: str
+    data: Union[List[Calendars], Calendars]
