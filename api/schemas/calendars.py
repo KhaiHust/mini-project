@@ -29,7 +29,6 @@ class ShowCalendars(Calendars):
 
 class TimeShow(BaseModel):
     start_time: datetime.datetime
-    end_time: datetime.datetime
 
 
 class MovieCalendars(BaseModel):
@@ -38,5 +37,6 @@ class MovieCalendars(BaseModel):
 
 
 class CalendersListResponse(BaseModel):
+
     msg: str
-    data: Union[List[Calendars], Calendars]
+    data: Optional[Union[Calendars, List[Calendars]]]
