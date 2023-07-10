@@ -13,30 +13,16 @@ class PeeweeGetterDict(GetterDict):
         return res
 
 
-class Calendars(BaseModel):
-    id: int
-    movie_id: Any
-    start_time: datetime.datetime
-    end_time: datetime.datetime
-    seat_ordered: Optional[list[int]]
+class Orders(BaseModel):
+    id: Optional[int]
+    user_id: int
+    calendar_id: int
+    seat_id: list[int]
+    create_at: Optional[datetime.datetime]
+    payment: bool
 
 
-class ShowCalendars(Calendars):
+class ShowOrders(Orders):
     class Config:
         orm_mode = True
         getter_dict = PeeweeGetterDict
-
-
-class TimeShow(BaseModel):
-    start_time: datetime.datetime
-
-
-class MovieCalendars(BaseModel):
-    movie_id: int
-    time: List[TimeShow]
-
-
-class CalendersListResponse(BaseModel):
-
-    msg: str
-    data: Optional[Union[Calendars, List[Calendars]]]
