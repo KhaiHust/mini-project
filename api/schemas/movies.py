@@ -14,6 +14,7 @@ class PeeweeGetterDict(GetterDict):
 
 
 class Movies(BaseModel):
+    id : Any
     name: str
     start_date: datetime.date
     end_date:  datetime.date
@@ -23,7 +24,7 @@ class Movies(BaseModel):
 
 
 class ShowMovies(Movies):
-    id: int
+
 
     class Config:
         orm_mode = True
@@ -32,4 +33,4 @@ class ShowMovies(Movies):
 
 class MovieListResponse(BaseModel):
     msg: str
-    data: List[ShowMovies]
+    data: Optional[Union[List[ShowMovies], ShowMovies]]
