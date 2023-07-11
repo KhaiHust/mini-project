@@ -17,8 +17,9 @@ class Orders(BaseModel):
     id: Optional[int]
     user_id: int
     calendar_id: int
-    seat_id: list[int]
+    seat_id: Optional[list[int]]
     create_at: Optional[datetime.datetime]
+    total_price: Optional[int]
     payment: bool
 
 
@@ -26,3 +27,8 @@ class ShowOrders(Orders):
     class Config:
         orm_mode = True
         getter_dict = PeeweeGetterDict
+
+
+class OrdersListResponse(BaseModel):
+    msg: str
+    data: Optional[Union[List[ShowOrders], ShowOrders]]
