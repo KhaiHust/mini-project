@@ -4,7 +4,7 @@ import peewee as p
 
 class Users(PeeWeeBaseModel):
     id = p.PrimaryKeyField()
-    fullname = p.TextField()
-    mobile = p.TextField()
-    email = p.TextField()
-    activestatus = p.BooleanField()
+    name = p.TextField(null=False)
+    email = p.TextField(null=False)
+    password = p.TextField(null=False)
+    role = p.TextField(choices=['ADMIN', 'USER'])
